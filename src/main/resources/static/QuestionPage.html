@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Judge</title>
+    <style>
+      body {
+        background: linear-gradient(to right, rgb(130, 9, 9), navy);
+        margin: 0;
+      }
+      .Easy-button {
+        color: lightblue;
+        border: none;
+        background-color: rgb(100, 91, 91);
+        border-radius: 4px;
+      }
+      /* FIX 3: removed margin-left:48% — centering handled by flex wrapper */
+      .Submit-button {
+        border-radius: 5px;
+        border: none;
+        color: grey;
+        background: #1e1e1e;
+        padding: 8px 24px;
+        cursor: pointer;
+        transition: box-shadow 0.15s;
+      }
+      .Submit-button:hover { box-shadow: 3px 5px 5px #1e1e1e62; }
+      .Submit-button:active { background-color: #535151; color: white; }
+
+      .Head-container {
+        display: flex;
+        justify-content: center;
+        font-size: 20px;
+        text-align: center;
+        color: aliceblue;
+        box-shadow: 0px 2px 5px;
+      }
+      .Title { width: 80%; margin-left: 250px; }
+      .Owner-title { font-size: 16px; padding: 10px; width: 300px; }
+
+      .main-container {
+        display: flex;
+        padding: 10px;
+        padding-right: 30px;
+      }
+      .question-container {
+        width: 50%;
+        background: white;
+        height: 550px;
+        padding: 10px 20px;
+        margin-left: 20px;
+        box-shadow: 3px 5px 5px black;
+        border-radius: 3px;
+        overflow-y: auto;
+        overflow-x: hidden;
+      }
+      .editor-container {
+        width: 50%;
+        margin-bottom: 40px;
+        height: 552px;
+        padding-right: 4px;
+        padding-left: 2px;
+        box-shadow: 3px 20px 5px;
+      }
+      textarea {
+        width: 100%;
+        height: 276px;
+        padding: 15px;
+        background: #1e1e1e;
+        color: white;
+        font-family: monospace;
+        overflow-y: auto;
+        overflow-x: hidden;
+        box-sizing: border-box;
+      }
+      #Output {
+        background: #1e1e1e;
+        color: #00ffcc;
+        padding: 15px;
+        border-radius: 5px;
+        max-height: 200px;
+        overflow: auto;
+        margin: 0;
+      }
+    </style>
+</head>
+<body>
+
+<div class="Head-container">
+  <div class="Title"><h1>Mini Judge</h1></div>
+  <div class="Owner-title">Mini Project by Shailesh Sonawane</div>
+</div>
+
+<div style="display: flex; justify-content: center; padding: 10px 0;">
+	<button onclick="changeQuestion(-1)">◀ Prev</button>
+	  <button onclick="submitCode()" class="Submit-button">▶ Run</button>
+  <button onclick="changeQuestion(1)">Next ▶</button>
+</div>
+
+<div class="main-container">
+  <div class="question-container" id="question-pannel">
+  </div>
+
+  <div class="editor-container">
+    <textarea id="codeInput" placeholder="Enter your Java code here!"></textarea>
+    <textarea id="inputBox" placeholder="Input Box"></textarea>
+  </div>
+</div>
+
+<!-- FIX 1: id was "outputsection" — must match JS's "outputSection" exactly -->
+<div id="outputSection" style="margin: 20px 20px 0; display: none;">
+  <h3 style="color: white;">Output</h3>
+  <pre id="Output"></pre>
+</div>
+
+<script src="logicOfJudge.js"></script>
+</body>
+</html>
